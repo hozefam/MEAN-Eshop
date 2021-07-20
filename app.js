@@ -1,12 +1,15 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const cors = require('cors');
 require('dotenv/config');
 
 const app = express();
 const api = process.env.API_URL;
 
 // Middleware
+app.use(cors());
+app.options('*', cors());
 app.use(express.json());
 app.use(morgan('tiny'));
 
